@@ -10,7 +10,7 @@ class Calculator{
 
 };
     long long Calculator::factorial(int n){ // hàm tinh giai thua cua n phan tu 
-        if(n=0){
+        if(n==0){
             return 1;
         }
         else {
@@ -23,6 +23,7 @@ class Calculator{
         }
         else{
             cout << "error" <<endl;
+            return -1;
         }
     }
     long long Calculator::arrangement(int n, int k){ // ham tinh chinh hop chap k cua n phan tu
@@ -31,6 +32,7 @@ class Calculator{
         }
         else {
             cout << "error" <<endl;
+            return -1;
         }
     }
     int main(){
@@ -49,10 +51,12 @@ class Calculator{
         cout << "--------------------------\n";
         switch (option) {
             case 1:
-                cout << "combination C(" << n << ", " << k << ") = " << hv_th_ch.combination(n, k) << endl;
+                if(n >= k && n >= 1 && k >= 0){
+                cout << "combination C(" << n << ", " << k << ") = " << hv_th_ch.combination(n, k) << endl;}
                 break;
             case 2:
-                cout << "arrangement A(" << n << ", " << k << ") = " << hv_th_ch.arrangement(n, k) << endl;
+                if(n >= k && n >= 1 && k >= 0){
+                cout << "arrangement A(" << n << ", " << k << ") = " << hv_th_ch.arrangement(n, k) << endl;}
                 break;
             default:
                 cout << "error!\n";
