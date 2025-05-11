@@ -42,6 +42,29 @@ double Equation_solve::quadratic_solving(double a, double b, double c){
     }
 }
 
+double Equation_solve::cbroot_imagine_theta(double real, double imagin){
+    double agumen=sqrt(real*real-imagin*imagin);
+    double r=cbrt(agumen);
+    double theta;
+    if((imagin/agumen)>=0){
+        theta=acos(real/agumen);
+    }
+    else if(((imagin/agumen)<0) && ((real/agumen)>=0)){
+        theta=asin(imagin/agumen);
+    }
+    else{
+        theta=(2*asin(imagin/agumen)-pi);
+    }
+    return theta;
+}
+
+double Equation_solve::cbroot_imagine(double real, double imagine, double theta){
+double omega1=theta/3;
+double omega2=theta/3+2*pi/3;
+double omega3=theta/3+4*pi/3;
+double
+}
+
 double Equation_solve::cubic_solving(double a, double b, double c, double d){
     if(a==0){
         quadratic_solving(b,c,d);
@@ -53,12 +76,7 @@ double Equation_solve::cubic_solving(double a, double b, double c, double d){
             cout<<"x = "<<cbrt(delta1+sqrt(delta2))+cbrt(delta1-sqrt(delta2)-b/(3*a))<<endl;
         }
         else{
-            double r=cbrt(sqrt(delta1*delta1-delta2));
-            double theta=asin(delta1/r);
-            double omega1=theta/3;
-            double omega2=theta/3+2*pi/3;
-            double omega3=theta/3+4*pi/3;
-
-        }
+            ...
+        } 
     }
 }
