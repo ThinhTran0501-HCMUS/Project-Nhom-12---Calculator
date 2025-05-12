@@ -5,12 +5,12 @@
 #include <cmath>
 #include <iostream>
 using namespace std;
-class Calculator_mode
-{
-public:
+class Calculator_mode{
+    private:
+    int choice;
+    public:
     Calculator_mode();
     virtual ~Calculator_mode()=default;
-
     /* Ham dung de nhap du kien input, vi du neu ta nhap la pi
     thi chuong trinh se coi no nhu 3.14159 */
     virtual double parse_input(string const &str);
