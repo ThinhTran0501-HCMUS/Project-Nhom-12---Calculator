@@ -20,7 +20,7 @@ double Combination::parseInput(string& input) {
     return value;
 }
 
-void Combination::welcome() const {
+void Combination::welcome()  {
     cout << "Welcome to Combination Mode!" << endl;
 }
 
@@ -56,6 +56,6 @@ void Combination::setMem() {
     cout << "Memory set to: " << mem << endl;
 }
 
-void Combination::printMem() const {
+void Combination::printMem() {
     cout << "Memory value: " << mem << endl;
 }
