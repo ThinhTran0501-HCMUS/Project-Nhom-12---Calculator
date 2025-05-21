@@ -4,15 +4,15 @@
 using namespace std;
 
 Combination::Combination() : ans(0), preans(0) {}
-
-int Combination::factorial(int n) {
+Combination::~Combination(){}
+int Combination::factorial(int n) { 
     int result = 1;
     for (int i = 2; i <= n; ++i)
         result *= i;
     return result;
 }
 
-double Combination::parseInput(string& input) {
+double Combination::parseInput(string& input) { 
     if (input == "mem") return mem;
     if (input == "result") return result;
     double value;
@@ -20,7 +20,7 @@ double Combination::parseInput(string& input) {
     return value;
 }
 
-void Combination::welcome()  {
+void Combination::welcome() {
     cout << "Welcome to Combination Mode!" << endl;
 }
 
