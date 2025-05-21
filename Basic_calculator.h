@@ -8,7 +8,7 @@
 // #include "Calculator_mode.h"
 const double PI = 3.14159265358979323846;
 const double E  = 2.71828182845904523536;
-using namespace std;
+
 class Basic_calculator{
     protected:
     double ans, preans, mem;
@@ -18,7 +18,7 @@ class Basic_calculator{
 
     // ---- hàm tính toán đều nhập từ 2 số ,đang học vector dự kiến t7 cn chỉnh sửa hàm phân giải input và toán tử//
     //hàm nhập input nếu là e thì define nếu pi là 3.14 đầu vào 
-    virtual double parse_input(const string&);
+    virtual double parse_input(const std::string&);
 
     // Giới thiệu (overrive)
     virtual void welcome() const;
