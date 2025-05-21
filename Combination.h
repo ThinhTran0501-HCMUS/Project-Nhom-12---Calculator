@@ -13,7 +13,7 @@ private:
 
 public:
     Combination();
-    virtual ~Combination() = default;
+    virtual ~Combination();
 
     double parseInput(string& input) ;
     void welcome() ;
