@@ -11,36 +11,36 @@ int main() {
     string command;
 
     while (true) {
-        cout << "\nNhập lệnh (combi, arrange, perm, print_mem, set_mem, exit): ";
+        cout << "\n Enter (combi, arrange, perm, print_mem, set_mem, exit): ";
         cin >> command;
 
         if (command == "exit") {
-            cout << "Thoát chương trình.\n";
+            cout << "Exit the program.\n"; // command=exit thì thoát chương trình 
             break;
         }
-        else if (command == "combi") {
+        else if (command == "combi") { // tổ hợp có dạng nCr
             int n, r;
-            cout << "Nhập n và r: ";
+            cout << "Enter n and r: ";
             cin >> n >> r;
             combi.combi_cal(n, r);
         }
-        else if (command == "arrange") {
+        else if (command == "arrange") {  // chỉnh hợp có dạng nAr 
             int n, r;
-            cout << "Nhập n và r: ";
+            cout << "Enter n and r: ";
             cin >> n >> r;
             combi.arrangement(n, r);
         }
-        else if (command == "perm") {
+        else if (command == "perm") { // hoán vị n!
             int n;
-            cout << "Nhập n: ";
+            cout << "Enter n: ";
             cin >> n;
             combi.permutation(n);
         }
-        else if (command == "print_mem" || command == "set_mem") {
+        else if (command == "print_mem" || command == "set_mem") { // in giá trị bộ nhớ và kết quả nó đã lưu 
             combi.parseOperation(command);
         }
         else {
-            cout << "Lệnh không hợp lệ.\n";
+            cout << "not valid.\n";
         }
     }
 
