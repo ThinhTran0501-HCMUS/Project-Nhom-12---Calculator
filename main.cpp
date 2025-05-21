@@ -3,9 +3,13 @@
 int main(){
     Basic_calculator* b;
     std::string input="" ;
-    while (std::cin>>input && input!="exit"){
-        b->welcome();
-        b->parse_input(input);
+     b->welcome();
+    while (std::cin>>input &&std::cout<<"\n>>> "&&true ){
+       if (input=="Exit"||input=="exit"){
+        std::cout<<"Exit basic calculator"<<std::endl;
+        break;
+       }
+        b->parseOperation(input);
     }
    
 
