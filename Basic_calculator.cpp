@@ -79,10 +79,10 @@ void Basic_calculator::parseOperation(const std::string& input) {
     {
         print_mem();
     }
-    else 
+    else if (input.length()==1)
     {
-        char(input);
-        switch (input) 
+        char op=input[0];
+        switch (op) 
         {
         case '+': add(); break;
         case '-': subtract(); break;
