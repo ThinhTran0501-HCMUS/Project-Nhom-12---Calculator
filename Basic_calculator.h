@@ -1,13 +1,11 @@
-#ifndef BASIC_CALCULATOR.H
-#define BASIC_CALCULATOR.H
+#ifndef BASIC_CALCULATOR_H
+#define BASIC_CALCULATOR_H
 
 #include <cmath>
 #include <array>
 #include <string>
 //kế thừa calculator mode
 // #include "Calculator_mode.h"
-
-
 const double PI = 3.14159265358979323846;
 const double E  = 2.71828182845904523536;
 using namespace std;
@@ -22,7 +20,7 @@ class Basic_calculator{
     //hàm nhập input nếu là e thì define nếu pi là 3.14 đầu vào 
     virtual double parse_input(const string&);
 
-    // Giới thiệu
+    // Giới thiệu (overrive)
     virtual void welcome() const;
 
     //hàm phân tách dấu (ở th nhập vào 2 biến)
@@ -36,7 +34,7 @@ class Basic_calculator{
     void square();
     void sqrt();
 
-    //các hàm luong giac
+    //các hàm sciencetific
     void conver_angle();
     void sin();
     void cos();
