@@ -6,7 +6,7 @@
 
 Chào mừng, các bạn. Đây là **dự án máy tính vĩ đại nhất** trong lịch sử sinh viên. Được tạo ra bởi nhóm Nhóm 12 — nhiều người nói nó còn hoành tráng hơn cả máy tính trên điện thoại của bạn. Tôi hoàn toàn đồng ý.<br/>
 
-## 🤔 Có Gì Đặc Biệt?<br/>
+## Có Gì Đặc Biệt?<br/>
 
 Chiếc máy tính này làm **mọi thứ** — không như mấy app giả trân ngoài chợ. Chúng ta đang nói về sức mạnh toán học **đỉnh cao**, các bạn:<br/>
 
@@ -26,17 +26,16 @@ Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. Sa
 | Nhánh         | Chức năng chính                                             |<br/>
 |---------------|-------------------------------------------------------------|<br/>
 | `main`        | Sản phẩm hoàn chỉnh. Tất cả tinh túy gói gọn ở đây.         |<br/>
-| `H_Thinh`     | Toán cao cấp — tổ hợp, hoán vị. Thiên tài mà.                |<br/>
+| `H_Thinh`     | Toán cao cấp — tổ hợp, hoán vị. Thiên tài mà.               |<br/>
 | `V_Thinh`     | Giai thừa và kiểm tra số nguyên tố. Sắc bén vô đối.         |<br/>
 | `Truyet`      | Phân tích biểu thức. Chính xác đến từng ký tự.              |<br/>
-| `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                  |<br/>
+| `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                 |<br/>
 
 ## Biệt đội siêu codẻ vjp pro<br/>
-
-    Trần Thịnh<br/>
-    Vân Thịnh <br/>
-    Minh Truyết <br/>
-    Tuấn Khoa  <br/>
+ Trần Thịnh<br/>
+ Vân Thịnh <br/>
+ Minh Truyết <br/>
+ Tuấn Khoa  <br/>
 
 ## Giấy Phép
 
