@@ -31,6 +31,11 @@ Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. Sa
 | `Truyet`      | Phân tích biểu thức. Chính xác đến từng ký tự.              |<br/>
 | `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                 |<br/>
 
+| Column 1      | Column 2      |
+| ------------- | ------------- |
+| Cell 1, Row 1 | Cell 2, Row 1 |
+| Cell 1, Row 2 | Cell 1, Row 2 |
+
 ## Biệt đội siêu codẻ vjp pro<br/>
  Trần Thịnh<br/>
  Vân Thịnh <br/>
