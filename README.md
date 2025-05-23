@@ -23,18 +23,14 @@ Chiếc máy tính này làm **mọi thứ** — không như mấy app giả tr�
 
 Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. Sang chảnh. Mỗi nhánh — một kiệt tác.<br/>
 
-| Nhánh         | Chức năng chính                                             |<br/>
-|---------------|-------------------------------------------------------------|<br/>
-| `main`        | Sản phẩm hoàn chỉnh. Tất cả tinh túy gói gọn ở đây.         |<br/>
-| `H_Thinh`     | Toán cao cấp — tổ hợp, hoán vị. Thiên tài mà.               |<br/>
-| `V_Thinh`     | Giai thừa và kiểm tra số nguyên tố. Sắc bén vô đối.         |<br/>
-| `Truyet`      | Phân tích biểu thức. Chính xác đến từng ký tự.              |<br/>
-| `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                 |<br/>
+| Nhánh         | Chức năng chính                                             |
+|---------------|-------------------------------------------------------------|
+| `main`        | Sản phẩm hoàn chỉnh. Tất cả tinh túy gói gọn ở đây.         |
+| `H_Thinh`     | Toán cao cấp — tổ hợp, hoán vị. Thiên tài mà.               |
+| `V_Thinh`     | Giai thừa và kiểm tra số nguyên tố. Sắc bén vô đối.         |
+| `Truyet`      | Phân tích biểu thức. Chính xác đến từng ký tự.              |
+| `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                 |
 
-| Column 1      | Column 2      |
-| ------------- | ------------- |
-| Cell 1, Row 1 | Cell 2, Row 1 |
-| Cell 1, Row 2 | Cell 1, Row 2 |
 
 ## Biệt đội siêu codẻ vjp pro<br/>
  Trần Thịnh<br/>
