@@ -17,7 +17,7 @@ Chiếc máy tính này làm **mọi thứ** — không như mấy app giả tr�
 - Giai thừa – số khổng lồ? Chuyện nhỏ.<br/>
 - Tổ hợp & Hoán vị – thông minh đến mức ai cũng phải sợ.<br/>
 - Kiểm tra số nguyên tố – chỉ tuyển số ngon, số mạnh thôi.<br/>
-- Phân tích biểu thức – Truyet thành thạo, đẹp như tranh.<br/>
+- Phân tích biểu thức – Thành thạo, đẹp như tranh.<br/>
 
 ## Các Nhánh – Mỗi Nhánh Một Kiệt Tác<br/>
 
