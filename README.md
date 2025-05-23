@@ -21,15 +21,15 @@ Chiếc máy tính này làm **mọi thứ** — không như mấy app giả tr�
 
 ## Các Nhánh – Mỗi Nhánh Một Kiệt Tác<br/>
 
-Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. Sang chảnh. Mỗi nhánh — một kiệt tác.<br/>
+Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. Mỗi nhánh — một kiệt tác.<br/>
 
 | Nhánh         | Chức năng chính                                             |
 |---------------|-------------------------------------------------------------|
 | `main`        | Sản phẩm hoàn chỉnh. Tất cả tinh túy gói gọn ở đây.         |
-| `H_Thinh`     | Toán cao cấp — tổ hợp, hoán vị. Thiên tài mà.               |
-| `V_Thinh`     | Giai thừa và kiểm tra số nguyên tố. Sắc bén vô đối.         |
-| `Truyet`      | Phân tích biểu thức. Chính xác đến từng ký tự.              |
-| `Tuan_Khoa`   | Phép tính cơ bản – mạnh mẽ như tường thành.                 |
+| `H_Thinh`     | Phân tích biểu thức, chuyển đổi đơn vị                      | 
+| `V_Thinh`     | Máy tính cơ bản.                                            | 
+| `Truyet`      | Giai thừa và kiểm tra số nguyên tố.                         | 
+| `Tuan_Khoa`   | Toán cao cấp.                                               |  
 
 
 ## Biệt đội siêu codẻ vjp pro<br/>
