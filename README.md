@@ -32,8 +32,8 @@ Chúng tôi không ném hết code vào một chỗ. Chúng tôi chia nhánh. M�
 | `Tuan_Khoa`   | Toán cao cấp.                                               |  
 
 
-## Biệt đội siêu codẻ vjp pro<br/>
- Trần Thịnh<br/>
+## Biệt đội siêu codẻ đơ vjp pro<br/>
+ Hưng Thịnh<br/>
  Vân Thịnh <br/>
  Minh Truyết <br/>
  Tuấn Khoa  <br/>
