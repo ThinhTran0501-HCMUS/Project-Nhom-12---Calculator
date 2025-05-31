@@ -9,6 +9,8 @@ using namespace std;
 class Equation_solve:public Calculator_mode{
     private:
     int choice;
+    protected:
+    float ans, preans, mem;
     public:
     Equation_solve();
     virtual ~Equation_solve()=default;
@@ -21,6 +23,8 @@ class Equation_solve:public Calculator_mode{
     virtual void parse_operation(string const &str);
     // Ham dung de in ten mode hien tai
     void print_name();
+    void set_choice(int choice);
+    int get_choice();
 };
 
 #endif

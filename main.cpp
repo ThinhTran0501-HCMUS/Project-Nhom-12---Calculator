@@ -1,7 +1,9 @@
+#include <string>
+#include <array>
+#include <cmath>
 #include <iostream>
 #include <iomanip>
 #include "Calculator_mode.h"
-
 using namespace std;
 int getChoice(int max_choice);
 

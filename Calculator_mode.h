@@ -21,8 +21,8 @@ class Calculator_mode{
     // Ham dung de in ten mode hien tai
     virtual void print_name();
     //Ham dung de thiet lap va hien thi lua chon
-    void set_choice(int choice);
-    int get_choice();
+   virtual void set_choice(int choice);
+   virtual int get_choice();
 };
 
 #endif

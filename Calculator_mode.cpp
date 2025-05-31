@@ -5,9 +5,7 @@
 #include <iomanip>
 #include "Calculator_mode.h"
 using namespace std;
-Calculator_mode::Calculator_mode(){
-    choice=0;
-}
+Calculator_mode::Calculator_mode():choice(1){}
 void Calculator_mode::welcome(){
               const int width = 50;
     string title = "SUPER POWER CALCULATOR";
