@@ -18,13 +18,13 @@ class Equation_solve:public Calculator_mode{
     thi chuong trinh se coi no nhu 3.14159 */
     virtual double parse_input(string const &str);
     // Ham dung de hien thi menu cho moi mode
-    virtual void welcome()=0;
+    virtual void welcome();
     //Ham dung de nhap phep tinh, vi du nhap * chuong trinh se biet la phep nhan
     virtual void parse_operation(string const &str);
     // Ham dung de in ten mode hien tai
-    void print_name();
-    void set_choice(int choice);
-    int get_choice();
+    virtual void print_name();
+    virtual void set_choice(int choice);
+    virtual int get_choice();
 };
 
 #endif
