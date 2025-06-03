@@ -1,0 +1,26 @@
+#ifndef EQUATION_SOLVE_H
+#define EQUATION_SOLVE_H
+#include <string>
+#include <array>
+#include <cmath>
+#include <iostream>
+#include "Calculator_mode.h"
+using namespace std;
+class Equation_solve:public Calculator_mode{
+    private:
+    int choice;
+    public:
+    Equation_solve();
+    virtual ~Equation_solve()=default;
+    /* Ham dung de nhap du kien input, vi du neu ta nhap la pi
+    thi chuong trinh se coi no nhu 3.14159 */
+    virtual double parse_input(string const &str);
+    // Ham dung de hien thi menu cho moi mode
+    virtual void welcome()=0;
+    //Ham dung de nhap phep tinh, vi du nhap * chuong trinh se biet la phep nhan
+    virtual void parse_operation(string const &str);
+    // Ham dung de in ten mode hien tai
+    void print_name();
+};
+
+#endif
