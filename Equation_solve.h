@@ -11,7 +11,7 @@ class Equation_solve:public Calculator_mode{
     int choice;
     string modeName;
     protected:
-    float ans, preans, mem;
+    float x,y,z,x1,x2,x3, mem;
     public:
     Equation_solve();
     virtual ~Equation_solve()=default;

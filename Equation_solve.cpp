@@ -5,7 +5,10 @@
 #include <iomanip>
 #include "Equation_solve.h"
 using namespace std;
-Equation_solve::Equation_solve():choice(1),ans(0.0),preans(0.0),mem(0.0),modeName("Equation solver"){}
+Equation_solve::Equation_solve()
+: choice(1), mem(0.0),
+  x(0.0), y(0.0), z(0.0), x1(0.0), x2(0.0), x3(0.0),
+  modeName("Equation solver"){}
 
 double Equation_solve::parse_input(string const &str){
         // Lowercase input for easier comparison
@@ -30,9 +33,13 @@ double Equation_solve::parse_input(string const &str){
     if (in == "nine")  return 9;
 
     // Special keywords
-    if (in == "result" || in == "ans") return ans;  // assuming `result` is defined in class
+    if (in == "x") return x;  // assuming `result` is defined in class
     if (in == "mem")    return mem;
-    if (in=="preans") return preans;     // assuming `mem` is defined in class
+    if (in=="y") return y;     // assuming `mem` is defined in class
+    if (in=="z") return z;
+    if (in=="x1") return x1;
+    if (in=="x2") return x2;
+    if (in=="x3") return x3;
 
     // Try to parse number
     try {

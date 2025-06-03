@@ -7,6 +7,7 @@
 #include <thread>
 #include "Calculator_mode.h"
 #include "Equation_solve.h"
+#include "Two_vars.h"
 using namespace std;
 
 int getChoice(int max_choice);
@@ -16,6 +17,7 @@ void waitingfor();
 int main() {
     Calculator_mode calc;
     Equation_solve equa;
+    Two_vars sys2var;
     Calculator_mode* calcPtr = &calc;
 
     // Main loop
@@ -35,6 +37,7 @@ int main() {
 
         switch (choice) {
             case 1:
+            case 2:
             case 3:
             case 4:
             case 5:
@@ -42,10 +45,9 @@ int main() {
                 construct(); // placeholder for other modes
                 break;
 
-            case 2: { // Equation Solver
- 
-                while (true) {
-                    calcPtr=&equa; 
+            case 7: { // Equation Solver
+                while (true){
+                    calcPtr = &equa; 
                     calcPtr->welcome();
                     calcPtr->set_choice(getChoice(7));
                     int subchoice = calcPtr->get_choice();
@@ -56,22 +58,25 @@ int main() {
                         break;
                     }
 
-                    // For now, just print that it's under construction
-                    construct();
+                    switch (subchoice){
+                        case 5: {
+                            calcPtr = &sys2var; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            break;
+                        }
+                        default:
+                            construct();
+                        break;
+                    }
                 }
                 break;
             }
-
-            case 7:
-                construct(); // e.g., Matrix mode
-                break;
-
             default:
                 cout << "Unknown option.\n";
                 break;
         }
     }
-
     return 0;
 }
 
