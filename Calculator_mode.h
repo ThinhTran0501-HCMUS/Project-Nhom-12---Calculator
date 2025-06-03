@@ -8,6 +8,7 @@ using namespace std;
 class Calculator_mode{
     private:
     int choice;
+    string modeName;
     public:
     Calculator_mode();
     virtual ~Calculator_mode()=default;

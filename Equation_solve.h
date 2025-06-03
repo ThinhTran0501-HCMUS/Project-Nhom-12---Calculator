@@ -9,6 +9,7 @@ using namespace std;
 class Equation_solve:public Calculator_mode{
     private:
     int choice;
+    string modeName;
     protected:
     float ans, preans, mem;
     public:

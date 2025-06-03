@@ -3,15 +3,75 @@
 #include <cmath>
 #include <iostream>
 #include <iomanip>
+#include <chrono>
+#include <thread>
 #include "Calculator_mode.h"
+#include "Equation_solve.h"
 using namespace std;
-int getChoice(int max_choice);
 
-int main(){
+int getChoice(int max_choice);
+void construct();
+void waitingfor();
+
+int main() {
     Calculator_mode calc;
+    Equation_solve equa;
     Calculator_mode* calcPtr = &calc;
-    calcPtr->welcome();
-    calcPtr->set_choice(getChoice(8));
+
+    // Main loop
+    while (true) {
+        calcPtr = &calc;
+        calcPtr->welcome();
+        calcPtr->set_choice(getChoice(8));
+
+        int choice = calcPtr->get_choice();
+
+        if (choice == 8) {
+            cout << "Exiting the calculator.\n";
+            waitingfor();
+            cout<<"Goodbye!\n";
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                construct(); // placeholder for other modes
+                break;
+
+            case 2: { // Equation Solver
+ 
+                while (true) {
+                    calcPtr=&equa; 
+                    calcPtr->welcome();
+                    calcPtr->set_choice(getChoice(7));
+                    int subchoice = calcPtr->get_choice();
+
+                    if (subchoice == 7) {
+                        cout << "Returning to main menu...\n\n";
+                        waitingfor();
+                        break;
+                    }
+
+                    // For now, just print that it's under construction
+                    construct();
+                }
+                break;
+            }
+
+            case 7:
+                construct(); // e.g., Matrix mode
+                break;
+
+            default:
+                cout << "Unknown option.\n";
+                break;
+        }
+    }
+
     return 0;
 }
 
@@ -46,4 +106,19 @@ try {
         cout << e.what() << endl;
         return getChoice(max_choice); // thu lai
     }
+}
+
+void construct(){
+    cout << "Sorry, this feature is under development." << endl;
+    waitingfor();
+}
+
+void waitingfor(){
+    for (int i = 3; i >= 1; --i) {
+        cout << "\rPlease wait for " << i << " second" << (i > 1 ? "s" : "") << "    " << flush;
+        this_thread::sleep_for(chrono::seconds(1));
+    }
+
+    // Erase the line after countdown
+    cout << "\r" << string(40, ' ') << "\r" << flush;
 }

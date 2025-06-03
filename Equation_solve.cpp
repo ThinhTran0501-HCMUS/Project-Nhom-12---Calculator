@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "Equation_solve.h"
 using namespace std;
-Equation_solve::Equation_solve():choice(1),ans(0.0),preans(0.0),mem(0.0){}
+Equation_solve::Equation_solve():choice(1),ans(0.0),preans(0.0),mem(0.0),modeName("Equation solver"){}
 
 double Equation_solve::parse_input(string const &str){
         // Lowercase input for easier comparison
@@ -62,7 +62,7 @@ void Equation_solve:: parse_operation(string const &str){
     cout<<"Under construction\n";
 }
 void Equation_solve:: print_name(){
-    cout<<"Mode: This is Equation Solver\n";
+    cout<<"Mode: "<<modeName<<"\n";
 }
 void Equation_solve::set_choice(int choice){
 this->choice=choice;

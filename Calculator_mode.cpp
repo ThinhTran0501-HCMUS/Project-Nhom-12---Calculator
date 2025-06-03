@@ -5,7 +5,7 @@
 #include <iomanip>
 #include "Calculator_mode.h"
 using namespace std;
-Calculator_mode::Calculator_mode():choice(1){}
+Calculator_mode::Calculator_mode():choice(1),modeName("Default mode"){}
 void Calculator_mode::welcome(){
               const int width = 50;
     string title = "SUPER POWER CALCULATOR";
@@ -38,7 +38,7 @@ void Calculator_mode::welcome(){
     cout << "  8. Exit\n";
 }
 void Calculator_mode::print_name(){
-    cout<<"\nMode: This is the default mode."<<endl;
+    cout<<"\nMode: "<<modeName<<endl;
 }
 void Calculator_mode::set_choice(int choice){
 this->choice=choice;
