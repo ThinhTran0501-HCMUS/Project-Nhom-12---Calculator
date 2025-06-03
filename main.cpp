@@ -1,46 +1,120 @@
+#include <string>
+#include <array>
+#include <cmath>
 #include <iostream>
 #include <iomanip>
+#include <chrono>
+#include <thread>
 #include "Calculator_mode.h"
-
+    #include "Equation_solve.h"
+        #include "Two_vars.h"
+            #include "Three_vars.h"
+        #include "Quadratic_equa.h"
+            #include "Quadratic_ine.h"
+        #include "Cubic_equa.h"
 using namespace std;
-void introduction();
+
 int getChoice(int max_choice);
+void construct();
+void waitingfor();
 
-int main(){
-    introduction();
-    int choice_1 = getChoice(7);
+int main() {
+    Calculator_mode calc;
+    Equation_solve equa;
+        Two_vars sys2var;
+            Three_vars sys3var;
+        Quadratic_equa deg2equa;
+            Quadratic_ine deg2ine;
+        Cubic_equa deg3equa;
+    Calculator_mode* calcPtr = &calc;
+
+    // Main loop
+    while (true) {
+        calcPtr = &calc;
+        calcPtr->welcome();
+        calcPtr->set_choice(getChoice(8));
+
+        int choice = calcPtr->get_choice();
+
+        if (choice == 8) {
+            cout << "Exiting the calculator.\n";
+            waitingfor();
+            cout<<"Goodbye!\n";
+            break;
+        }
+
+        switch (choice) {
+            case 1:
+            case 2:
+            case 3:
+            case 4:
+            case 5:
+            case 6:
+                construct(); // placeholder for other modes
+                break;
+
+            case 7: { // Equation Solver
+                while (true){
+                    calcPtr = &equa; 
+                    calcPtr->welcome();
+                    calcPtr->set_choice(getChoice(6));
+                    int subchoice = calcPtr->get_choice();
+
+                    if (subchoice == 6) {
+                        cout << "Returning to main menu...\n\n";
+                        waitingfor();
+                        break;
+                    }
+
+                    switch (subchoice){
+                        case 1: {
+                            calcPtr = &deg2equa; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;
+                        }
+                        case 2: {
+                            calcPtr = &deg3equa; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                            
+                        }
+                        case 3:{
+                            calcPtr = &deg2ine; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                           
+                        }
+                        case 4: {
+                            calcPtr = &sys2var; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;
+                        }
+                        case 5: {
+                            calcPtr = &sys3var; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                            
+                        }
+                        default:
+                            construct();
+                        break;
+                    }
+                }
+                break;
+            }
+            default:
+                cout << "Unknown option.\n";
+                break;
+        }
+    }
     return 0;
-}
-
-void introduction(){
-            const int width = 50;
-    string title = "SUPER POWER CALCULATOR";
-
-    cout << string(width, '*') << '\n';         // bien tren
-    cout << "*" << setw(width - 1) << "*" << '\n';  // khoang trang
-    // cout << "*";
-
-    // trung tam data
-    int padding = (width - 2 - title.length()) / 2;
-    cout <<"*"<< string(padding, ' ') << title;
-    cout << string(width - 2 - padding - title.length(), ' ') << "*\n";
-
-    cout << "*" << setw(width - 1) << "*" << '\n';  // khoang trang
-    cout << string(width, '*') << '\n';         // bien duoi
-    cout << '\n';
-
-    // Cac lua chon
-    cout << "Please select a mode:\n\n";
-
-    cout << "  1. Basic Operations\n";
-    cout << "  2. Combination\n";
-    cout << "  3. Unit Converter\n\n";
-
-    cout << "  4. Polynomial Simplification\n";
-    cout << "  5. Base-N Converter\n";
-    cout << "  6. Matrix Calculator\n\n";
-
-    cout << "  7. Equation Solver\n";
 }
 
 int getChoice(int max_choice){
@@ -74,4 +148,19 @@ try {
         cout << e.what() << endl;
         return getChoice(max_choice); // thu lai
     }
+}
+
+void construct(){
+    cout << "Sorry, this feature is under development." << endl;
+    waitingfor();
+}
+
+void waitingfor(){
+    for (int i = 3; i >= 1; --i) {
+        cout << "\rPlease wait for " << i << " second" << (i > 1 ? "s" : "") << "    " << flush;
+        this_thread::sleep_for(chrono::seconds(1));
+    }
+
+    // Erase the line after countdown
+    cout << "\r" << string(40, ' ') << "\r" << flush;
 }
