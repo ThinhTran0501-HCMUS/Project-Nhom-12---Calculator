@@ -59,11 +59,9 @@ void Equation_solve:: welcome(){
     cout << "  2. Cubic Equation\n";
     cout << "  3. Quadratic Inequality \n\n";
 
-    cout << "  4. Cubic Inequality\n";
-    cout << "  5. Two-Variables System.\n";
-    cout << "  6. Three-Variables System.\n\n";
-
-    cout << "  7. Exit\n";
+    cout << "  4. Two-Variables System.\n";
+    cout << "  5. Three-Variables System.\n\n";
+    cout << "  6. Exit\n";
 }
 void Equation_solve:: parse_operation(string const &str){
     cout<<"Under construction\n";

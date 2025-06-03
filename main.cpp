@@ -10,6 +10,8 @@
         #include "Two_vars.h"
             #include "Three_vars.h"
         #include "Quadratic_equa.h"
+            #include "Quadratic_ine.h"
+        #include "Cubic_equa.h"
 using namespace std;
 
 int getChoice(int max_choice);
@@ -22,6 +24,8 @@ int main() {
         Two_vars sys2var;
             Three_vars sys3var;
         Quadratic_equa deg2equa;
+            Quadratic_ine deg2ine;
+        Cubic_equa deg3equa;
     Calculator_mode* calcPtr = &calc;
 
     // Main loop
@@ -53,10 +57,10 @@ int main() {
                 while (true){
                     calcPtr = &equa; 
                     calcPtr->welcome();
-                    calcPtr->set_choice(getChoice(7));
+                    calcPtr->set_choice(getChoice(6));
                     int subchoice = calcPtr->get_choice();
 
-                    if (subchoice == 7) {
+                    if (subchoice == 6) {
                         cout << "Returning to main menu...\n\n";
                         waitingfor();
                         break;
@@ -70,14 +74,28 @@ int main() {
                             waitingfor();
                             break;
                         }
-                        case 5: {
+                        case 2: {
+                            calcPtr = &deg3equa; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                            
+                        }
+                        case 3:{
+                            calcPtr = &deg2ine; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                           
+                        }
+                        case 4: {
                             calcPtr = &sys2var; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
                             waitingfor();
                             break;
                         }
-                        case 6: {
+                        case 5: {
                             calcPtr = &sys3var; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
