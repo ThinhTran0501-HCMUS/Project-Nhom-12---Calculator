@@ -8,6 +8,7 @@
 #include "Calculator_mode.h"
 #include "Equation_solve.h"
 #include "Two_vars.h"
+#include "Three_vars.h"
 using namespace std;
 
 int getChoice(int max_choice);
@@ -17,7 +18,8 @@ void waitingfor();
 int main() {
     Calculator_mode calc;
     Equation_solve equa;
-    Two_vars sys2var;
+        Two_vars sys2var;
+        Three_vars sys3var;
     Calculator_mode* calcPtr = &calc;
 
     // Main loop
@@ -63,7 +65,15 @@ int main() {
                             calcPtr = &sys2var; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
+                            waitingfor();
                             break;
+                        }
+                        case 6: {
+                            calcPtr = &sys3var; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;                            
                         }
                         default:
                             construct();

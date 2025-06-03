@@ -26,7 +26,7 @@ public:
 
     void set_mem();
     void print_mem();
-    void The_solver();
+    virtual void The_solver();
 };
 
 #endif
