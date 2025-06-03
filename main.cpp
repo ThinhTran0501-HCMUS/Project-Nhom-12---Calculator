@@ -6,9 +6,10 @@
 #include <chrono>
 #include <thread>
 #include "Calculator_mode.h"
-#include "Equation_solve.h"
-#include "Two_vars.h"
-#include "Three_vars.h"
+    #include "Equation_solve.h"
+        #include "Two_vars.h"
+            #include "Three_vars.h"
+        #include "Quadratic_equa.h"
 using namespace std;
 
 int getChoice(int max_choice);
@@ -19,7 +20,8 @@ int main() {
     Calculator_mode calc;
     Equation_solve equa;
         Two_vars sys2var;
-        Three_vars sys3var;
+            Three_vars sys3var;
+        Quadratic_equa deg2equa;
     Calculator_mode* calcPtr = &calc;
 
     // Main loop
@@ -61,6 +63,13 @@ int main() {
                     }
 
                     switch (subchoice){
+                        case 1: {
+                            calcPtr = &deg2equa; // Use polymorphism to delegate
+                            calcPtr->welcome();
+                            calcPtr->parse_operation("");
+                            waitingfor();
+                            break;
+                        }
                         case 5: {
                             calcPtr = &sys2var; // Use polymorphism to delegate
                             calcPtr->welcome();

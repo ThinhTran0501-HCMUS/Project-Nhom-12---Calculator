@@ -6,6 +6,8 @@
 #include <iomanip>
 using namespace std;
 
+Three_vars::Three_vars():a1(0),b1(0),c1(0),d1(0),a2(0),b2(0),c2(0),d2(0),a3(0),b3(0),c3(0),d3(0),modename("Three-variable system"){}
+
 void Three_vars::welcome() {
     cout << "\n--- THREE-VARIABLE SYSTEM OF EQUATIONS MODE ---\n";
     cout << "Equation format: a1*x + b1*y + c1*z = d1\n";
