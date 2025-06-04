@@ -31,14 +31,15 @@ double Basic_calculator::parse_input(const string& input) {
 }
 
 void Basic_calculator::welcome() const {
-    cout << "Welcome to Basic Calculator!\n"
-    <<"         nhập các toán tử sau\n"
+    cout << "----Welcome to Basic Calculator!---\n"
+    <<"         Enter the operator blow:\n"
     <<"--------------------------------------\n"
     <<"   +   /    sin()     ln()\n"
     <<"   -   ^    cos()     lg()\n"
     <<"   x   v    tan()     abs()\n"
     <<"  ans preans  mem       =    exit\n"
-    <<"--------------------------------------\n";    
+    <<"--------------------------------------\n"
+    <<">>";    
 }
 
 // Hàm phân tách toán tử và lưu vào ans, preans (ví dụ: "3+4")
