@@ -1,6 +1,8 @@
 #include "Basic_calculator.h"
 #include <iostream>
-
+#include <cmath>
+#include <array>
+#include <string>
 
 using namespace std;
 

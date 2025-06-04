@@ -4,6 +4,7 @@
 #include <cmath>
 #include <array>
 #include <string>
+#include <iostream>
 //kế thừa calculator mode
 // #include "Calculator_mode.h"
 const double PI = 3.14159265358979323846;

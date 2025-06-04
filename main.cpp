@@ -8,6 +8,4 @@ int main(){
         b->parse_input(input);
     }
     b->welcome();
-
-
 }
