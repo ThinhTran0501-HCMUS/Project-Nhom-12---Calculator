@@ -25,7 +25,7 @@ class Basic_calculator{
     virtual void welcome() const;
 
     //hàm phân tách dấu (ở th nhập vào 2 biến)
-    virtual void parseOperation(const std::string&);
+    virtual void parseOperation(const string&);
 
     //các hàm tính toán
     void add();             
@@ -33,7 +33,7 @@ class Basic_calculator{
     void multiply();
     void divide();
     void square();
-    void sqrt();
+    void sqroot();
 
     //các hàm sciencetific
     void conver_angle();
@@ -43,7 +43,7 @@ class Basic_calculator{
     void ln();
     void log();
     void abs();
-    void pow();
+    void power();
 
     //hàm đặt biến 'nhớ'
     void set_mem();

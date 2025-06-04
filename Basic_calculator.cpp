@@ -8,46 +8,68 @@ using namespace std;
 
 Basic_calculator::Basic_calculator() : ans(0.0), preans(0.0), mem(0.0) {}
 
-double Basic_calculator::parse_input(const string& input) {
-    if (input == "pi" || input == "PI"|| input =="Pi") return PI;
-    if (input == "e" || input == "E") return E;
+double Basic_calculator::parse_input(const string& str) {
+    // Lowercase input for easier comparison
+    string in;
+    for (char c : str)
+        in += tolower(c);
 
-    // Cố gắng chuyển thành số
-     if (input == "ans")
+    // Named constants
+    if (in == "pi") return PI;
+    if (in == "e")  return E;
+
+    // Word to number map
+    if (in == "zero")  return 0;
+    if (in == "one")   return 1;
+    if (in == "two")   return 2;
+    if (in == "three") return 3;
+    if (in == "four")  return 4;
+    if (in == "five")  return 5;
+    if (in == "six")   return 6;
+    if (in == "seven") return 7;
+    if (in == "eight") return 8;
+    if (in == "nine")  return 9;
+        // Cố gắng chuyển thành số
+     if (in == "ans")
     {
         return ans;
     }
-    else if (input == "mem")
+    else if (in == "mem")
     {
         return mem;
     }
-    else if(input == "preans")
+    else if(in == "preans")
     {
         return preans;
-    }
-    else
-    {
-        return std::stod(input);// chuyển về số
-    }
-    
+    } 
+    // Try to parse number
+    try {
+        return stod(str);
+    } catch (...) {
+        cerr << "Invalid input: " << str << ". Defaulting to 0.\n";
+        return 0.0;
+    }   
 }
 
 void Basic_calculator::welcome() const {
-    cout << "Welcome to Basic Calculator!\n"
-    <<"         nhập các toán tử sau\n"
+    cout << "BASIC CALCULATOR MODE\n"
+    <<"         Enter your input\n"
     <<"--------------------------------------\n"
     <<"   +   /    sin()     ln()\n"
     <<"   -   ^    cos()     lg()\n"
-    <<"   x   v    tan()     abs()\n"
+    <<"   x   sqrt    tan()     abs()\n"
     <<"  ans preans  mem       =    exit\n"
     <<"--------------------------------------\n";    
 }
 
 // Hàm phân tách toán tử và lưu vào ans, preans (ví dụ: "3+4")
-void Basic_calculator::parseOperation(const std::string& input) {
+void Basic_calculator::parseOperation(const string& input) {
     if (input == "sin")
     {
         sin();
+    }
+    else if (input=="sqrt"){
+        sqroot();
     }
     else if (input == "cos")
     {
@@ -55,7 +77,7 @@ void Basic_calculator::parseOperation(const std::string& input) {
     }
     else if (input == "tan")
     {
-        cos();
+        tan();
     }
     else if (input == "ln")
     {
@@ -71,7 +93,7 @@ void Basic_calculator::parseOperation(const std::string& input) {
     }
     else if (input == "pow")
     {
-        pow();
+        power();
     }
     else if (input == "setmem")
     {
@@ -90,7 +112,7 @@ void Basic_calculator::parseOperation(const std::string& input) {
         case '-': subtract(); break;
         case '*': multiply(); break;
         case '/': divide(); break;
-        case '^': pow(); break;
+        case '^': power(); break;
         default: cerr << "Invalid operator\n"; break;
         }
     }
@@ -103,7 +125,7 @@ void Basic_calculator::add() {
     cout << "Enter second number: ";cin >> b;
     preans=ans;
     ans = parse_input(a) + parse_input(b);
-    std::cout << ans;
+    cout << ans;
 }
 
 void Basic_calculator::subtract() {
@@ -112,7 +134,7 @@ void Basic_calculator::subtract() {
     cout <<"Enter second number: ";cin >> b;
     preans=ans;
     ans = parse_input(a) - parse_input(b);
-    std::cout  << ans;
+    cout  << ans;
 }
 
 void Basic_calculator::multiply() {
@@ -121,16 +143,21 @@ void Basic_calculator::multiply() {
     cout << "Enter second number: ";cin >> b;
     preans=ans;
     ans = parse_input(a) * parse_input(b);
-    std::cout  << ans;
+    cout  << ans;
 }
 
 void Basic_calculator::divide() {
    string a, b;
     cout << "Enter first number: ";cin >> a;
     cout << "Enter second number: ";cin >> b;
+    if (parse_input(b)!=0){
     preans=ans;
     ans = parse_input(a) / parse_input(b);
-    std::cout  << ans;
+    cout  << ans;
+    }
+    else{
+        cout<<"\n Can not divided by 0\n";
+    }
 }
 
 void Basic_calculator::square() {
@@ -138,17 +165,17 @@ void Basic_calculator::square() {
     cout << "Enter a number: ";cin >> a;
     preans=ans;
     ans = parse_input(a) * parse_input(a);
-    std::cout  << ans;
+    cout  << ans;
 }
 
-void Basic_calculator::sqrt() {
+void Basic_calculator::sqroot() {
     string a;
     cout << "Enter a number: ";cin >> a;
     if (parse_input(a) < 0) {
         cerr << "Math Error!.\n";//có thể thêm hàm phức
         return;
     }
-    ans = std::sqrt(parse_input(a));
+    ans = sqrt(parse_input(a));
     cout  << ans << endl;
 }
 
@@ -156,7 +183,7 @@ void Basic_calculator::sqrt() {
 void Basic_calculator::conver_angle() {
     string a;
     cout << "Enter a number: ";cin >> a;
-    ans=parse_input(a)* PI / 180.0;
+    ans=(parse_input(a)* PI) / 180.0;
     
 }
 
@@ -204,12 +231,12 @@ void Basic_calculator::abs() {
     cout  << ans << endl;
 }
 
-void Basic_calculator::pow() {
+void Basic_calculator::power() {
     string a,b;
     cout << "Enter the number: ";cin >> a;
     std::cout<<"Exponet: ";cin>>b;
     preans=ans;
-    ans = std::pow(parse_input(a), parse_input(b));
+    ans = pow(parse_input(a), parse_input(b));
     cout  << ans << endl;
 }
 
@@ -221,7 +248,7 @@ void Basic_calculator::set_mem() {
 }
 
 void Basic_calculator::print_mem() const {
-    cout << "mem:= " << mem << endl;
+    cout << "mem= " << mem << endl;
 }
 
 
