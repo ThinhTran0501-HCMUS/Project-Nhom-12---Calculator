@@ -8,7 +8,7 @@ int main(){
     string input="" ;
     b->welcome();
     while (cin>>input && input!="exit"){
-        b->parse_input(input);
+        b->parseOperation(input);
         b->welcome();
     }
     cout<<"\n Exit programe\n";
