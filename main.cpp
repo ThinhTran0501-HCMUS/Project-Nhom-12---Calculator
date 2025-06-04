@@ -6,6 +6,7 @@
 #include <chrono>
 #include <thread>
 #include "Calculator_mode.h"
+    #include "Basic_calculator.h"
     #include "Equation_solve.h"
         #include "Two_vars.h"
             #include "Three_vars.h"
@@ -20,12 +21,13 @@ void waitingfor();
 
 int main() {
     Calculator_mode calc;
-    Equation_solve equa;
-        Two_vars sys2var;
-            Three_vars sys3var;
-        Quadratic_equa deg2equa;
-            Quadratic_ine deg2ine;
-        Cubic_equa deg3equa;
+        Basic_calculator basiccal;
+        Equation_solve equa;
+            Two_vars sys2var;
+                Three_vars sys3var;
+            Quadratic_equa deg2equa;
+                Quadratic_ine deg2ine;
+            Cubic_equa deg3equa;
     Calculator_mode* calcPtr = &calc;
 
     // Main loop
@@ -44,7 +46,6 @@ int main() {
         }
 
         switch (choice) {
-            case 1:
             case 2:
             case 3:
             case 4:
@@ -52,6 +53,27 @@ int main() {
             case 6:
                 construct(); // placeholder for other modes
                 break;
+            case 1: {
+                calcPtr = &basiccal;
+                calcPtr->welcome();
+                string user_input;
+                while (true) {
+                    cout << "\nEnter operation (or type 'exit' to return): ";
+                    cin >> user_input;
+
+                    if (user_input == "exit") {
+                        cout << "Returning to main menu...\n\n";
+                        waitingfor();
+                        break;
+                    }
+
+                    calcPtr->parse_operation(user_input);
+                    cout << endl;
+                    calcPtr->welcome();
+                }
+
+                break;
+            }
 
             case 7: { // Equation Solver
                 while (true){
