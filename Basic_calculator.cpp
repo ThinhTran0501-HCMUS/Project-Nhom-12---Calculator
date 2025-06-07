@@ -55,55 +55,58 @@ void Basic_calculator::welcome(){
     cout << "BASIC CALCULATOR MODE\n"
     <<"         Enter your input\n"
     <<"--------------------------------------\n"
-    <<"   +   /    sin()     ln()\n"
-    <<"   -   ^    cos()     lg()\n"
-    <<"   x   sqrt    tan()     abs()\n"
-    <<"  ans preans  mem       =    exit\n"
+    <<"   +     /     sin()     ln()\n"
+    <<"   -     pow   cos()     lg()\n"
+    <<"   x     sqrt  tan()     abs()\n"
+    <<"   setmem    printmem    exit\n"
     <<"--------------------------------------\n";    
 }
 
 // Hàm phân tách toán tử và lưu vào ans, preans (ví dụ: "3+4")
 void Basic_calculator::parse_operation(const string& input) {
-    if (input == "sin") {
+    string in;
+    for (char c : input)
+        in += tolower(c);
+    if (in == "sin") {
         sin();
     }
-    else if (input == "sqrt") {
+    else if (in == "sqrt") {
         sqroot();
     }
-    else if (input == "cos") {
+    else if (in == "cos") {
         cos();
     }
-    else if (input == "tan") {
+    else if (in == "tan") {
         tan();
     }
-    else if (input == "ln") {
+    else if (in == "ln") {
         ln();
     }
-    else if (input == "log") {
+    else if (in == "log") {
         loga();
     }
-    else if (input == "abs") {
+    else if (in == "abs") {
         abso();
     }
-    else if (input == "pow"||input=="^") {
+    else if (in == "pow"||in=="^") {
         power();
     }
-    else if (input == "setmem") {
+    else if (in == "setmem") {
         set_mem();
     }
-    else if (input == "printmem") {
+    else if (in == "printmem") {
         print_mem();
     }
-    else if (input == "+") {
+    else if (in == "+") {
         add();
     }
-    else if (input == "-") {
+    else if (in == "-") {
         subtract();
     }
-    else if (input == "*") {
+    else if (in == "*"||in=="x") {
         multiply();
     }
-    else if (input == "/") {
+    else if (in == "/") {
         divide();
     }
     else {
