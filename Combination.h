@@ -24,6 +24,6 @@ public:
     void permutation(int n);
 
     void setMem();         
-    void printMem() ; 
+    void printMem();
 };
 #endif
