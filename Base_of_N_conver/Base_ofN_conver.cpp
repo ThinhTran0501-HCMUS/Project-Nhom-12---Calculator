@@ -44,7 +44,7 @@ string Base::To_BaseOfN(int number, int base){
 
         return result == "" ? "0" : result;
 }
-
+//bất kỳ về 10
 int Base::To_Dec(string input, int base){
         int result = 0;
         int power = 1;
