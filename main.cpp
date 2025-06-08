@@ -7,6 +7,8 @@
 #include <thread>
 #include "Calculator_mode.h"
     #include "Basic_calculator.h"
+    #include "Combination.h"
+    #include "Matrix.h"
     #include "Equation_solve.h"
         #include "Two_vars.h"
             #include "Three_vars.h"
@@ -17,11 +19,13 @@ using namespace std;
 
 int getChoice(int max_choice);
 void construct();
-void waitingfor();
+void waitingfor(int seconds = 3);
 
 int main() {
     Calculator_mode calc;
         Basic_calculator basiccal;
+        Combination combi;
+        Matrix matrix;
         Equation_solve equa;
             Two_vars sys2var;
                 Three_vars sys3var;
@@ -40,21 +44,42 @@ int main() {
 
         if (choice == 8) {
             cout << "Exiting the calculator.\n";
-            waitingfor();
+            waitingfor(3);
             cout<<"Goodbye!\n";
             break;
         }
 
         switch (choice) {
-            case 2:
             case 3:
             case 4:
             case 5:
-            case 6:
                 construct(); // placeholder for other modes
                 break;
             case 1: {
                 calcPtr = &basiccal;
+                calcPtr->welcome();
+                string user_input;
+                while (true) {
+                    cout << "\nEnter operation (or type 'exit' to return): ";
+                    cin >> user_input;
+
+                    if (user_input == "exit") {
+                        cout << "Returning to main menu...\n\n";
+                        waitingfor(3);
+                        break;
+                    }
+
+                    calcPtr->parse_operation(user_input);
+                    cout << endl;
+                    waitingfor();
+                    calcPtr->welcome();
+                }
+
+                break;
+            }
+
+            case 2: {
+                calcPtr = &combi;
                 calcPtr->welcome();
                 string user_input;
                 while (true) {
@@ -68,10 +93,20 @@ int main() {
                     }
 
                     calcPtr->parse_operation(user_input);
+                    waitingfor();
                     cout << endl;
                     calcPtr->welcome();
                 }
 
+                break;
+            }
+            
+            case 6: {
+                calcPtr = &matrix;
+                calcPtr->parse_operation("");
+                if (calcPtr->get_choice()==7){
+                    waitingfor();
+                };
                 break;
             }
 
@@ -84,7 +119,7 @@ int main() {
 
                     if (subchoice == 6) {
                         cout << "Returning to main menu...\n\n";
-                        waitingfor();
+                        waitingfor(3);
                         break;
                     }
 
@@ -93,35 +128,35 @@ int main() {
                             calcPtr = &deg2equa; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
-                            waitingfor();
+                            waitingfor(6);
                             break;
                         }
                         case 2: {
                             calcPtr = &deg3equa; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
-                            waitingfor();
+                            waitingfor(6);
                             break;                            
                         }
                         case 3:{
                             calcPtr = &deg2ine; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
-                            waitingfor();
+                            waitingfor(6);
                             break;                           
                         }
                         case 4: {
                             calcPtr = &sys2var; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
-                            waitingfor();
+                            waitingfor(6);
                             break;
                         }
                         case 5: {
                             calcPtr = &sys3var; // Use polymorphism to delegate
                             calcPtr->welcome();
                             calcPtr->parse_operation("");
-                            waitingfor();
+                            waitingfor(6);
                             break;                            
                         }
                         default:
@@ -174,11 +209,11 @@ try {
 
 void construct(){
     cout << "Sorry, this feature is under development." << endl;
-    waitingfor();
+    waitingfor(3);
 }
 
-void waitingfor(){
-    for (int i = 3; i >= 1; --i) {
+void waitingfor(int seconds) {
+    for (int i = seconds; i >= 1; --i) {
         cout << "\rPlease wait for " << i << " second" << (i > 1 ? "s" : "") << "    " << flush;
         this_thread::sleep_for(chrono::seconds(1));
     }
