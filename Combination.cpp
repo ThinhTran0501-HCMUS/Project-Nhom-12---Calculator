@@ -5,7 +5,7 @@
 using namespace std;
 
 Combination::Combination() : ans(0), preans(0),mem(0),modeName("Combination"){}
-int Combination::factorial(int n) { 
+int Combination::factorial(int n) {
     if(n==0||n==1){
         return 1;
     }
