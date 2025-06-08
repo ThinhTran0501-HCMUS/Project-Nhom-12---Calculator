@@ -1,17 +1,65 @@
-#include"Matrix.h"
-#include<iostream>
-#include<string>
-using namespace std;
-Matrix::~Matrix(){}
-Matrix::Matrix(){}
+#include "Matrix.h"
+
+Matrix::Matrix() : choice(1), modeName("Matrix Calculator") {}
+
+void Matrix::welcome() {
+    cout << "\n MATRIX CALCULATOR\n";
+    cout << "Choose a matrix operation:\n\n";
+    cout << "  1. Add Matrices\n";
+    cout << "  2. Subtract Matrices\n";
+    cout << "  3. Multiply Matrices\n";
+    cout << "  4. Transpose Matrix\n";
+    cout << "  5. Determinant\n";
+    cout << "  6. Inverse\n";
+    cout << "  7. Exit to Main Menu\n";
+}
+
+void Matrix::print_name() {
+    cout << "\nMode: " << modeName << endl;
+}
+
+void Matrix::set_choice(int choice) {
+    this->choice = choice;
+}
+
+int Matrix::get_choice() {
+    return choice;
+}
+
+void Matrix::parse_operation(const string& str) {
+    while (true) {
+        welcome();
+        cout << "\nEnter operation number (1-7): ";
+        int subChoice;
+        cin >> subChoice;
+        set_choice(subChoice);
+        if (subChoice == 7) {
+            cout << "Returning to main menu...\n";
+            break;
+        }
+
+        switch (subChoice) {
+            case 1: add(); break;
+            case 2: subtract(); break;
+            case 3: multiply(); break;
+            case 4: transposeMatrix(); break;
+            case 5: calculateDeterminant(); break;
+            case 6: calculateInverse(); break;
+            default: cout << "Invalid choice.\n"; continue;
+        }
+
+        cout << endl;
+    }
+}
+
 vector<vector<double>> Matrix::inputMatrix(int& rows, int& cols) {
     cout << "Enter number of rows: ";
     cin >> rows;
     cout << "Enter number of columns: ";
     cin >> cols;
 
-    vector<vector<double>> matrix(rows,vector<double>(cols));
-    std::cout << "Enter elements:\n";
+    vector<vector<double>> matrix(rows, vector<double>(cols));
+    cout << "Enter elements:\n";
     for (int i = 0; i < rows; ++i)
         for (int j = 0; j < cols; ++j) {
             cout << "[" << i << "][" << j << "]: ";
@@ -20,61 +68,55 @@ vector<vector<double>> Matrix::inputMatrix(int& rows, int& cols) {
 
     return matrix;
 }
-void Matrix::printMatrix(vector<vector<double>>& matrix){
-    cout << "Result matrix:\n";
-    for (vector<double> row : matrix) {
+
+void Matrix::printMatrix(const vector<vector<double>>& matrix) {
+    cout << "Matrix:\n";
+    for (const auto& row : matrix) {
         for (double val : row)
             cout << val << "\t";
         cout << "\n";
     }
 }
-void Matrix::add(){
-    int rows1, cols1, rows2, cols2;
+
+void Matrix::add() {
     cout << "--- Matrix Addition ---\n";
-
-    // Gọi inputMatrix và khai báo kiểu rõ ràng
-    vector<vector<double>> mat1 = inputMatrix(rows1, cols1);
-    vector<vector<double>> mat2 = inputMatrix(rows2, cols2);
-
-    if (rows1 != rows2 || cols1 != cols2) {
-        cout << "Matrix dimensions do not match!\n";
+    int r1, c1, r2, c2;
+    auto m1 = inputMatrix(r1, c1);
+    auto m2 = inputMatrix(r2, c2);
+    if (r1 != r2 || c1 != c2) {
+        cout << "Matrices must be the same size.\n";
         return;
     }
-
-    // Tạo ma trận kết quả
-    vector<vector<double>> result(rows1,vector<double>(cols1));
-
-    // Tính tổng
-    for (int i = 0; i < rows1; ++i) {
-        for (int j = 0; j < cols1; ++j) {
-            result[i][j] = mat1[i][j] + mat2[i][j];
-        }
-    }
-
-    // In kết quả
+    vector<vector<double>> result(r1, vector<double>(c1));
+    for (int i = 0; i < r1; ++i)
+        for (int j = 0; j < c1; ++j)
+            result[i][j] = m1[i][j] + m2[i][j];
     printMatrix(result);
 }
-void Matrix::subtract(){
+
+void Matrix::subtract() {
+    cout << "--- Matrix Subtraction ---\n";
     int r1, c1, r2, c2;
-    vector<vector<double>> m1 = inputMatrix(r1, c1);
-    vector<vector<double>> m2 = inputMatrix(r2, c2);
+    auto m1 = inputMatrix(r1, c1);
+    auto m2 = inputMatrix(r2, c2);
     if (r1 != r2 || c1 != c2) {
-        cout << "Matrix sizes do not match for subtraction.\n";
+        cout << "Matrices must be the same size.\n";
         return;
     }
     vector<vector<double>> result(r1, vector<double>(c1));
     for (int i = 0; i < r1; ++i)
         for (int j = 0; j < c1; ++j)
             result[i][j] = m1[i][j] - m2[i][j];
-    cout << "Result of subtraction:\n";
     printMatrix(result);
 }
-void Matrix::multiply(){
-     int r1, c1, r2, c2;
-    vector<vector<double>> m1 = inputMatrix(r1, c1);
-    vector<vector<double>> m2 = inputMatrix(r2, c2);
+
+void Matrix::multiply() {
+    cout << "--- Matrix Multiplication ---\n";
+    int r1, c1, r2, c2;
+    auto m1 = inputMatrix(r1, c1);
+    auto m2 = inputMatrix(r2, c2);
     if (c1 != r2) {
-        cout << "Invalid dimensions for multiplication.\n";
+        cout << "Columns of first matrix must equal rows of second.\n";
         return;
     }
     vector<vector<double>> result(r1, vector<double>(c2, 0));
@@ -82,69 +124,68 @@ void Matrix::multiply(){
         for (int j = 0; j < c2; ++j)
             for (int k = 0; k < c1; ++k)
                 result[i][j] += m1[i][k] * m2[k][j];
-    cout << "Result of multiplication:\n";
     printMatrix(result);
 }
-void Matrix::transposeMatrix(){
+
+void Matrix::transposeMatrix() {
+    cout << "--- Transpose Matrix ---\n";
     int r, c;
     auto m = inputMatrix(r, c);
     vector<vector<double>> result(c, vector<double>(r));
     for (int i = 0; i < r; ++i)
         for (int j = 0; j < c; ++j)
             result[j][i] = m[i][j];
-    cout << "Transposed matrix:\n";
     printMatrix(result);
 }
-double Matrix::determinant(vector<vector<double>>& matrix){
-     int n = matrix.size();
+
+double Matrix::determinant(vector<vector<double>>& matrix) {
+    int n = matrix.size();
     if (n == 1) return matrix[0][0];
     if (n == 2) return matrix[0][0]*matrix[1][1] - matrix[0][1]*matrix[1][0];
 
     double det = 0;
     for (int p = 0; p < n; ++p) {
-        vector<vector<double>> subMatrix(n - 1, vector<double>(n - 1));
+        vector<vector<double>> sub(n - 1, vector<double>(n - 1));
         for (int i = 1; i < n; ++i) {
-            int colIndex = 0;
+            int colIdx = 0;
             for (int j = 0; j < n; ++j) {
                 if (j == p) continue;
-                subMatrix[i - 1][colIndex++] = matrix[i][j];
+                sub[i - 1][colIdx++] = matrix[i][j];
             }
         }
-        det += (p % 2 == 0 ? 1 : -1) * matrix[0][p] * determinant(subMatrix);
+        det += (p % 2 == 0 ? 1 : -1) * matrix[0][p] * determinant(sub);
     }
     return det;
 }
-void Matrix::calculateDeterminant(){
-     int r, c;
+
+void Matrix::calculateDeterminant() {
+    cout << "--- Calculate Determinant ---\n";
+    int r, c;
     auto m = inputMatrix(r, c);
     if (r != c) {
-        cout << "Matrix must be square to compute determinant.\n";
+        cout << "Matrix must be square.\n";
         return;
     }
     cout << "Determinant: " << determinant(m) << endl;
 }
+
 vector<vector<double>> Matrix::inverse(vector<vector<double>>& m) {
     int n = m.size();
     vector<vector<double>> aug(n, vector<double>(2 * n));
 
-    // Create augmented matrix [A|I]
     for (int i = 0; i < n; ++i) {
         for (int j = 0; j < n; ++j) aug[i][j] = m[i][j];
         aug[i][i + n] = 1;
     }
 
-    // Gauss-Jordan elimination
     for (int i = 0; i < n; ++i) {
         if (aug[i][i] == 0) {
-            bool found = false;
             for (int j = i + 1; j < n; ++j) {
                 if (aug[j][i] != 0) {
                     swap(aug[i], aug[j]);
-                    found = true;
                     break;
                 }
             }
-            if (!found) throw runtime_error("Matrix is singular.");
         }
 
         double diag = aug[i][i];
@@ -167,18 +208,17 @@ vector<vector<double>> Matrix::inverse(vector<vector<double>>& m) {
 }
 
 void Matrix::calculateInverse() {
+    cout << "--- Calculate Inverse ---\n";
     int r, c;
     auto m = inputMatrix(r, c);
     if (r != c) {
-        cout << "Matrix must be square to compute inverse.\n";
+        cout << "Matrix must be square.\n";
         return;
     }
     try {
-        vector<vector<double>> inv = inverse(m);
-        cout << "Inverse matrix:\n";
+        auto inv = inverse(m);
         printMatrix(inv);
     } catch (exception& e) {
         cout << "Error: " << e.what() << endl;
     }
 }
-

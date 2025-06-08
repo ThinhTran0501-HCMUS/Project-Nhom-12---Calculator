@@ -1,27 +1,28 @@
 #ifndef COMBINATION_H
 #define COMBINATION_H
 
-#include "calculator.h"
+#include "Calculator_mode.h"
 #include <string>
 using namespace std;
-class Combination : public Calculator {
-private:
+class Combination : public Calculator_mode {
+protected:
     int ans;
     int preans;
-
+    int mem;
+    string modeName;
     int factorial(int n);
 
 public:
     Combination();
-    virtual ~Combination();
+    virtual ~Combination()=default;
 
-    double parseInput(string& input) ;
+    double parse_input(const string& str) ;
     void welcome() ;
-    void parseOperation(string& op) ;
+    void parse_operation(const string& op) ;
 
-    void combi_cal(int n, int r);
-    void arrangement(int n, int r);
-    void permutation(int n);
+    void combi_cal();
+    void arrangement();
+    void permutation();
 
     void setMem();         
     void printMem();
