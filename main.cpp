@@ -8,6 +8,7 @@
 #include "Calculator_mode.h"
     #include "Basic_calculator.h"
     #include "Combination.h"
+    #include "Base_of_N_convert.h"
     #include "Matrix.h"
     #include "Equation_solve.h"
         #include "Two_vars.h"
@@ -25,6 +26,7 @@ int main() {
     Calculator_mode calc;
         Basic_calculator basiccal;
         Combination combi;
+        Base baseN;
         Matrix matrix;
         Equation_solve equa;
             Two_vars sys2var;
@@ -52,7 +54,6 @@ int main() {
         switch (choice) {
             case 3:
             case 4:
-            case 5:
                 construct(); // placeholder for other modes
                 break;
             case 1: {
@@ -100,7 +101,14 @@ int main() {
 
                 break;
             }
-            
+            case 5: {
+                calcPtr = &baseN;
+                calcPtr->parse_operation("");
+                if (calcPtr->get_choice() == 5) {
+                    waitingfor();
+                }
+                break;
+            }
             case 6: {
                 calcPtr = &matrix;
                 calcPtr->parse_operation("");
