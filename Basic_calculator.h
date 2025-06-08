@@ -4,12 +4,14 @@
 #include <cmath>
 #include <array>
 #include <string>
+#include <iostream>
+#include "Calculator_mode.h"
 //kế thừa calculator mode
 // #include "Calculator_mode.h"
 const double PI = 3.14159265358979323846;
 const double E  = 2.71828182845904523536;
-
-class Basic_calculator{
+using namespace std;
+class Basic_calculator:public Calculator_mode{
     protected:
     double ans, preans, mem;
     public:
@@ -18,13 +20,13 @@ class Basic_calculator{
 
     // ---- hàm tính toán đều nhập từ 2 số ,đang học vector dự kiến t7 cn chỉnh sửa hàm phân giải input và toán tử//
     //hàm nhập input nếu là e thì define nếu pi là 3.14 đầu vào 
-    virtual double parse_input(const std::string&);
+    virtual double parse_input(const string&);
 
     // Giới thiệu (overrive)
-    virtual void welcome() const;
+    virtual void welcome();
 
     //hàm phân tách dấu (ở th nhập vào 2 biến)
-    virtual void parseOperation(const std::string&);
+    virtual void parse_operation(const string&);
 
     //các hàm tính toán
     void add();             
@@ -32,7 +34,7 @@ class Basic_calculator{
     void multiply();
     void divide();
     void square();
-    void sqrt();
+    void sqroot();
 
     //các hàm sciencetific
     void conver_angle();
@@ -40,9 +42,9 @@ class Basic_calculator{
     void cos();
     void tan();
     void ln();
-    void log();
-    void abs();
-    void pow();
+    void loga();
+    void abso();
+    void power();
 
     //hàm đặt biến 'nhớ'
     void set_mem();
