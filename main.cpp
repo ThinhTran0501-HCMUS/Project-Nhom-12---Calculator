@@ -8,6 +8,7 @@
 #include "Calculator_mode.h"
     #include "Basic_calculator.h"
     #include "Combination.h"
+    #include "Unit_convert.h"
     #include "Base_of_N_convert.h"
     #include "Polynomial_cal.h"
     #include "Matrix.h"
@@ -27,6 +28,7 @@ int main() {
     Calculator_mode calc;
         Basic_calculator basiccal;
         Combination combi;
+        Unit_convert unitcon;
         Polynomial poly;
         Base baseN;
         Matrix matrix;
@@ -54,9 +56,6 @@ int main() {
         }
 
         switch (choice) {
-            case 3:
-                construct(); // placeholder for other modes
-                break;
             case 1: {
                 calcPtr = &basiccal;
                 calcPtr->welcome();
@@ -100,6 +99,14 @@ int main() {
                     calcPtr->welcome();
                 }
 
+                break;
+            }
+            case 3: {
+                calcPtr = &unitcon;
+                calcPtr->parse_operation("");
+                if (calcPtr->get_choice() == 9) {
+                    waitingfor();
+                }
                 break;
             }
 
