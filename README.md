@@ -33,8 +33,9 @@ Welcome to the **Project N12** Calculator — an all-in-one C++ console applicat
 
 ### 🖥️ Compile:
 ```bash
-g++ -o main.exe *.cpp
 ./main.exe
+For sure, compile by:
+g++ -o main.exe main.cpp Calculator_mode.cpp Basic_calculator.cpp Combination.cpp Base_of_N_convert.cpp Equation_solve.cpp Matrix.cpp Polynomial_cal.cpp Unit_convert.cpp Cubic_equa.cpp Quadratic_equa.cpp Quadratic_ine.cpp Three_vars.cpp Two_vars.cpp
 Please select a mode:
 
   1. Basic Operations
